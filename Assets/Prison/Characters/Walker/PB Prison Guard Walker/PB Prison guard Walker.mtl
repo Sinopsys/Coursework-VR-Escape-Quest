@@ -1,0 +1,24 @@
+# Blender3D MTL File: 
+# Material Count: 2
+newmtl Tex_0081_0_dds_Tex_00_PB_Walker_body_Diffus
+Ns 3.921569
+Ka 0.000000 0.000000 0.000000
+Kd 0.376320 0.376320 0.376320
+Ks 0.000000 0.000000 0.000000
+Ni 1.500000
+d 0.000000
+illum 2
+map_Kd PB Walker_body_Diffuse.dds
+
+
+newmtl Tex_0053_0_dds_Tex_00_PB_Walker_head_Diffus
+Ns 3.921569
+Ka 0.000000 0.000000 0.000000
+Kd 0.376320 0.376320 0.376320
+Ks 0.000000 0.000000 0.000000
+Ni 1.500000
+d 0.000000
+illum 2
+map_Kd PB Walker_head_Diffuse.dds
+
+

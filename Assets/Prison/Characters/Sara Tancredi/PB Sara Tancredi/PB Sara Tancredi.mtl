@@ -1,0 +1,24 @@
+# Blender3D MTL File: 
+# Material Count: 2
+newmtl Tex_0049_0_dds_PB_Sara_body_Diffuse.
+Ns 7.843137
+Ka 0.000000 0.000000 0.000000
+Kd 0.470400 0.470400 0.470400
+Ks 0.000000 0.000000 0.000000
+Ni 1.500000
+d 0.000000
+illum 2
+map_Kd PB Sara_body_Diffuse.dds
+
+
+newmtl Tex_0050_0_dds_PB_Sara_head_Diffuse.
+Ns 7.843137
+Ka 0.000000 0.000000 0.000000
+Kd 0.470400 0.470400 0.470400
+Ks 0.000000 0.000000 0.000000
+Ni 1.500000
+d 0.000000
+illum 2
+map_Kd PB Sara_head_Diffuse.dds
+
+
