@@ -29,7 +29,7 @@ public class MainMenu : MonoBehaviour
 
     public void LoadLevel_N1()
     {
-        SceneManager.LoadScene(1);
+        SceneManager.LoadScene(0);
         Debug.Log("Loading Level 1...");
     }
 
