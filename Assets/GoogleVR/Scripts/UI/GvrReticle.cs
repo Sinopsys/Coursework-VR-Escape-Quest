@@ -65,7 +65,7 @@ public class GvrReticle : MonoBehaviour, IGvrGazePointer {
   }
 
   void OnDisable() {
-    if ((GvrReticle)GazeInputModule.gazePointer == this) {
+    if (GazeInputModule.gazePointer == this) {
       GazeInputModule.gazePointer = null;
     }
   }
