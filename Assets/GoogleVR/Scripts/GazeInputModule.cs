@@ -217,7 +217,7 @@ public class GazeInputModule : BaseInputModule
             pointingAt.Add(distance);
 
             //Debug.Log(distance.ToString() + "   " + hasEventTrigger.ToString());
-            if (!(distance <= 5F && hasEventTrigger))
+            if (!(distance <= 4.35F && hasEventTrigger))
             {
                 pointerData.pointerCurrentRaycast = new RaycastResult();
                 m_RaycastResultCache.Clear();
