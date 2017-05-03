@@ -64,9 +64,16 @@ public class GazeInputModule : BaseInputModule
     // Active state
     private bool isActive = false;
 
+    #region Kirill's code
+
     public GameObject vrCam;
+    /// <summary>
+    /// ArrayList of objects. [0]-GameObject which reticle is pointing at; 
+    /// [1]-bool hasEventTrigger; [2]-float distanceFromCam
+    /// </summary>
     public static ArrayList pointingAt;
 
+    #endregion Kirill's code
 
     /// Time in seconds between the pointer down and up events sent by a trigger.
     /// Allows time for the UI elements to make their state transitions.
@@ -183,9 +190,7 @@ public class GazeInputModule : BaseInputModule
         eventSystem.RaycastAll(pointerData, m_RaycastResultCache);
         pointerData.pointerCurrentRaycast = FindFirstRaycast(m_RaycastResultCache);
 
-        /**
-         * @begin Kirill's code
-         **/
+#region Kirill's code
         try
         {
 
@@ -211,8 +216,8 @@ public class GazeInputModule : BaseInputModule
             pointingAt.Add(hasEventTrigger);
             pointingAt.Add(distance);
 
-            Debug.Log(distance.ToString() + "   " + hasEventTrigger.ToString());
-            if (!(distance <= 4F && hasEventTrigger))
+            //Debug.Log(distance.ToString() + "   " + hasEventTrigger.ToString());
+            if (!(distance <= 5F && hasEventTrigger))
             {
                 pointerData.pointerCurrentRaycast = new RaycastResult();
                 m_RaycastResultCache.Clear();
@@ -222,9 +227,8 @@ public class GazeInputModule : BaseInputModule
         {
             Debug.Log("null ref exception!!!");
         }
-        /**
-         * @end Kirill's code
-         **/
+
+#endregion Kirill's code
 
         m_RaycastResultCache.Clear();
         pointerData.delta = headPose - lastHeadPose;

@@ -7,7 +7,7 @@ public class OpenDoorAndLoadScene : MonoBehaviour
 {
 
     public GameObject door;
-    private bool opened;
+    public static bool opened = false;
 
     // Use this for initialization
     void Start()
