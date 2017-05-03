@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class WalkByLook : MonoBehaviour
 {
@@ -19,10 +17,16 @@ public class WalkByLook : MonoBehaviour
     void Update()
     {
         moveForward = (vrCam.eulerAngles.x >= angle && vrCam.eulerAngles.x <= 90F);
-        if (moveForward)
+        //if (((bool)GazeInputModule.pointingAt[1] && (float)GazeInputModule.pointingAt[2] >= 4) || !((bool)GazeInputModule.pointingAt[1]))
+        //{ }
+
+        if (moveForward && ((bool)GazeInputModule.pointingAt[1] && (float)GazeInputModule.pointingAt[2] >= 4) || !((bool)GazeInputModule.pointingAt[1]))
         {
             Vector3 forward = vrCam.TransformDirection(Vector3.forward);
             cc.SimpleMove(forward * speed);
         }
     }
 }
+
+
+// EOF

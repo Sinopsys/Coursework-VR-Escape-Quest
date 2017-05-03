@@ -9,13 +9,11 @@ public class AutoWalkByClick : MonoBehaviour
     public float speed = 10F;
     public bool moveForward;
     private CharacterController controller;
-    private GvrViewer gvrViewer;
     private Transform vrHead;
 
     void Start()
     {
         controller = GetComponent<CharacterController>();
-        gvrViewer = transform.GetChild(0).GetComponent<GvrViewer>();
         vrHead = Camera.main.transform;
     }
 
@@ -32,3 +30,6 @@ public class AutoWalkByClick : MonoBehaviour
         }
     }
 }
+
+
+// EOF

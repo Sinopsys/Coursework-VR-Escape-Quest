@@ -1,8 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class OpenDoor : MonoBehaviour
+public class OpenDoorAndLoadScene : MonoBehaviour
 {
 
     public GameObject door;
@@ -27,6 +28,11 @@ public class OpenDoor : MonoBehaviour
             door.GetComponent<Animation>().Play();
             opened = true;
             Debug.Log("opened");
+
+            SceneManager.LoadScene("HouseInside1");
         }
     }
 }
+
+
+// EOF
