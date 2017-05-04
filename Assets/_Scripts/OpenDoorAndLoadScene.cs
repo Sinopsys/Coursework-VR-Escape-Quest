@@ -8,6 +8,7 @@ public class OpenDoorAndLoadScene : MonoBehaviour
 
     public GameObject door;
     public static bool opened = false;
+    public float timeToOpen = 0.3F;
 
     // Use this for initialization
     void Start()
@@ -21,14 +22,13 @@ public class OpenDoorAndLoadScene : MonoBehaviour
 
     }
 
-    public void OnTriggerStay(Collider other)
+    public IEnumerator OnTriggerStay(Collider other)
     {
         if (!opened)
         {
             door.GetComponent<Animation>().Play();
             opened = true;
-            Debug.Log("opened");
-
+            yield return new WaitForSeconds(timeToOpen);
             SceneManager.LoadScene("HouseInside1");
         }
     }
