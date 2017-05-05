@@ -5,7 +5,6 @@ using UnityEngine.SceneManagement;
 
 public class OpenDoorAndLoadScene : MonoBehaviour
 {
-
     public GameObject door;
     public static bool opened = false;
     public float timeToOpen = 0.3F;

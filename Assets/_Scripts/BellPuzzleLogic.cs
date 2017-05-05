@@ -6,7 +6,6 @@ using UnityEngine.EventSystems;
 public class BellPuzzleLogic : MonoBehaviour
 {
     public int bellsCount = 5;
-    private int activeBellsCount = 5;
     public int puzzleDifficulty = 5;
     private Transform[] bells;
     public Material defaultMaterial;
@@ -49,7 +48,7 @@ public class BellPuzzleLogic : MonoBehaviour
     public void StartPuzzle()
     {
         CancelInvoke("DisplayPattern");
-        InvokeRepeating("DisplayPattern", 3, puzzleSpeed);
+        InvokeRepeating("DisplayPattern", 1.2F, puzzleSpeed);
         currentSolveIndex = 0;
     }
 
@@ -68,9 +67,12 @@ public class BellPuzzleLogic : MonoBehaviour
 
     public void PlayerSelection(int bellSelected)
     {
-        Debug.Log("selected " + bellSelected);
-        if (!playerWon)
-            SolutionCheck(bellSelected);
+        if (shouldStart)
+        {
+            Debug.Log("selected " + bellSelected);
+            if (!playerWon)
+                SolutionCheck(bellSelected);
+        }
     }
 
     public void SolutionCheck(int playerSelectionIndex)
@@ -83,6 +85,7 @@ public class BellPuzzleLogic : MonoBehaviour
                 Debug.Log("SOLVED!");
                 playerWon = true;
                 PuzzleSolved();
+                shouldStart = false;
             }
         }
         else
@@ -93,7 +96,7 @@ public class BellPuzzleLogic : MonoBehaviour
     private void PuzzleSolved()
     {
         gameObject.GetComponents<AudioSource>()[1].Play();
-        // TODO add picture logic
+        GameObject.Find("Painting").GetComponent<ParticleSystem>().Play();
     }
 
     private void DisplayPattern()

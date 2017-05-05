@@ -10,7 +10,7 @@ public class PickUpObject : MonoBehaviour
     Vector3 oldScale;
     public Transform handMountingPosition;
     public Transform vrCam;
-    public float angle = 280F;
+    //private float angle = 280F;
     private bool tilted;
     bool pickedUp = false;
 
@@ -23,7 +23,9 @@ public class PickUpObject : MonoBehaviour
     void Update()
     {
         pickedUp = handMountingPosition.childCount == 1;
-        tilted = (vrCam.eulerAngles.x >= 275F && vrCam.eulerAngles.x <= 306F);
+        //if (pickedUp)
+        //    pickedUp = handMountingPosition.GetChild(0).name.CompareTo(gameObject.name) == 0;
+        tilted = (vrCam.eulerAngles.x >= 275F && vrCam.eulerAngles.x <= 300F);
         //Debug.Log(vrCam.eulerAngles.x + " " + tilted);
         if (tilted)
             ThrowObject();
@@ -37,21 +39,29 @@ public class PickUpObject : MonoBehaviour
             gameObject.transform.parent = handMountingPosition;
             gameObject.GetComponent<Rigidbody>().useGravity = false;
             gameObject.GetComponent<Rigidbody>().isKinematic = true;
-            gameObject.GetComponent<BoxCollider>().enabled = false;
+            gameObject.GetComponent<Collider>().enabled = false;
             gameObject.GetComponent<Rigidbody>().constraints = new RigidbodyConstraints();
-            gameObject.transform.localPosition = handPosition;
-            //gameObject.transform.localScale = oldScale;
+            gameObject.transform.localScale = oldScale;
+
+            gameObject.transform.localPosition = new Vector3(0F, 0F, 0F);
+            gameObject.transform.localRotation = Quaternion.Euler(0F, 0F, 0F);
+            handMountingPosition.localRotation = Quaternion.Euler(handRotation);
+            handMountingPosition.localPosition = handPosition;
+            handMountingPosition.localScale = new Vector3(1F, 1F, 1F);
         }
     }
 
     public void ThrowObject()
     {
-        //oldScale = gameObject.transform.localScale;
-        gameObject.GetComponent<Rigidbody>().useGravity = true;
-        gameObject.GetComponent<Rigidbody>().isKinematic = false;
-        gameObject.GetComponent<BoxCollider>().enabled = true;
-        gameObject.transform.parent = null;
-        //gameObject.transform.localScale = oldScale;
+        if (pickedUp && handMountingPosition.GetChild(0).name.CompareTo(gameObject.name) == 0)
+        {
+            //oldScale = gameObject.transform.localScale;
+            gameObject.GetComponent<Rigidbody>().useGravity = true;
+            gameObject.GetComponent<Rigidbody>().isKinematic = false;
+            gameObject.GetComponent<Collider>().enabled = true;
+            gameObject.transform.parent = null;
+            gameObject.transform.localScale = oldScale;
+        }
     }
 }
 

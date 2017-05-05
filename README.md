@@ -15,8 +15,8 @@ Android VR Escape Quest Game, 2 course SE
 * Make that slider triggers only when it has to
 * Stop redundant scripts
 * ~~Move slider higher~~
-* Move Player's hand to the left and a bit higher
+* ~~Move Player's hand to the left and a bit higher~~
 * Too many lights
-* Put a note on the table
+* ~~Put a note on the table~~
 * ~~Increase angle of throwing object~~
 * Canvas in the end of the game
