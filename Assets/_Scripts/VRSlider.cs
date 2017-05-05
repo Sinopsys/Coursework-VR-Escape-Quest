@@ -15,8 +15,8 @@ public class VRSlider : MonoBehaviour
     void Start()
     {
         mySlider = GetComponent<Slider>();
-        if (mySlider == null)
-            Debug.Log("Please Add a slider component to this GameObject");
+        //if (mySlider == null)
+        //    Debug.Log("Please Add a slider component to this GameObject");
     }
 
     public void PointerEnter()

@@ -12,3 +12,5 @@ Android VR Escape Quest Game, 2 course SE
 * Canvas and short story in the first scene
 * Randomize puzzles
 * Slier animation on the last puzzle
+* Make that slider triggers only when it has to
+* Stop redundant scripts

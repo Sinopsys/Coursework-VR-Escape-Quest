@@ -9,12 +9,11 @@ public class AutoWalkByClick : MonoBehaviour
     public float speed = 10F;
     public bool moveForward;
     private CharacterController controller;
-    private Transform vrHead;
+    public Transform vrHead;
 
     void Start()
     {
         controller = GetComponent<CharacterController>();
-        vrHead = Camera.main.transform;
     }
 
     void Update()

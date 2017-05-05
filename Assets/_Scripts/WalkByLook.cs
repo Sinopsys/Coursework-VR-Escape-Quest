@@ -13,7 +13,6 @@ public class WalkByLook : MonoBehaviour
     {
         GazeInputModule.pointingAt = null;
         cc = GetComponent<CharacterController>();
-        vrCam = Camera.main.transform;
     }
 
     void Update()

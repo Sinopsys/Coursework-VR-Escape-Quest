@@ -9,7 +9,7 @@ public class PickUpObject : MonoBehaviour
     public Vector3 handRotation;
     Vector3 oldScale;
     public Transform handMountingPosition;
-    private Transform vrCam;
+    public Transform vrCam;
     public float angle = 280F;
     private bool tilted;
     bool pickedUp = false;
@@ -17,15 +17,13 @@ public class PickUpObject : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        vrCam = Camera.main.transform;
-        handMountingPosition = vrCam.GetChild(0);
     }
 
     // Update is called once per frame
     void Update()
     {
         pickedUp = handMountingPosition.childCount == 1;
-        tilted = (vrCam.eulerAngles.x >= 275F && vrCam.eulerAngles.x <= 280F);
+        tilted = (vrCam.eulerAngles.x >= 275F && vrCam.eulerAngles.x <= 300F);
         //Debug.Log(vrCam.eulerAngles.x + " " + tilted);
         if (tilted)
             ThrowObject();
@@ -33,8 +31,6 @@ public class PickUpObject : MonoBehaviour
 
     public void MoveToPlayersHand()
     {
-
-        // todo only single obj
         if (!pickedUp)
         {
             oldScale = gameObject.transform.localScale;
@@ -44,11 +40,7 @@ public class PickUpObject : MonoBehaviour
             gameObject.GetComponent<BoxCollider>().enabled = false;
             gameObject.transform.localPosition = handPosition;
             gameObject.transform.localScale = oldScale;
-
-            // TODO remove constraints like freezing
-
-            //transform.localPosition += handPosition;
-            //transform.localEulerAngles = handRotation;
+            gameObject.GetComponent<Rigidbody>().constraints = new RigidbodyConstraints();
         }
     }
 

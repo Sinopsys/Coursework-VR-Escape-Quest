@@ -4,18 +4,16 @@ using UnityEngine;
 public class LastPuzzleLogic : MonoBehaviour
 {
     char[] numbers;
-    bool solved, wentOut;
-    Transform character, target;
+    bool solved;
     float step;
     string key = "4118956";
+
     // Use this for initialization
     void Start()
     {
         solved = false;
-        wentOut = false;
         numbers = new char[7];
-        character = GameObject.Find("Character").gameObject.transform;
-        target = GameObject.Find("FinishPos").gameObject.transform;
+        //character = GameObject.Find("Character").gameObject.transform;
     }
 
     // Update is called once per frame
@@ -37,12 +35,6 @@ public class LastPuzzleLogic : MonoBehaviour
                 OpenDoorAndLoadScene.opened = true;
                 gameObject.SetActive(false);
             }
-        }
-
-        if (solved)
-        {
-            step = 4F * Time.deltaTime;
-            character.position = Vector3.MoveTowards(character.position, target.position, step);
         }
     }
 }
