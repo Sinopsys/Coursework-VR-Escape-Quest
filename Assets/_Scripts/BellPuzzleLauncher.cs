@@ -31,41 +31,37 @@ public class BellPuzzleLauncher : MonoBehaviour
     public void OnTriggerStay(Collider other)
     {
         //Debug.Log("Should place a bell");
+        if ((other.name.CompareTo("Character") == 0) && hasBell && (angle >= 310F && angle <= 355F))
+        {
+            //Debug.Log(remainCount);
 
-        // TODO remove
-        BellPuzzleLogic.shouldStart = true;
-        return;
-        //if ((other.name.CompareTo("Character") == 0) && hasBell && (angle >= 310F && angle <= 355F))
-        //{
-        //    //Debug.Log(remainCount);
+            if (!firstPut && !secondPut)
+            {
+                firstToComplete.GetChild(1).gameObject.SetActive(true);
+                firstToComplete.GetChild(3).gameObject.SetActive(true);
+                firstToComplete.GetChild(6).gameObject.SetActive(true);
+                firstToComplete.GetChild(7).gameObject.SetActive(true);
+                firstToComplete.parent.GetComponent<BoxCollider>().enabled = true;
+                Destroy(handMountingPosition.GetChild(0).gameObject);
+                hasBell = false;
+                firstPut = true;
+                return;
+            }
 
-        //    if (!firstPut && !secondPut)
-        //    {
-        //        firstToComplete.GetChild(1).gameObject.SetActive(true);
-        //        firstToComplete.GetChild(3).gameObject.SetActive(true);
-        //        firstToComplete.GetChild(6).gameObject.SetActive(true);
-        //        firstToComplete.GetChild(7).gameObject.SetActive(true);
-        //        firstToComplete.parent.GetComponent<BoxCollider>().enabled = true;
-        //        Destroy(handMountingPosition.GetChild(0).gameObject);
-        //        hasBell = false;
-        //        firstPut = true;
-        //        return;
-        //    }
-
-        //    if (!secondPut && firstPut)
-        //    {
-        //        secondToComplete.GetChild(1).gameObject.SetActive(true);
-        //        secondToComplete.GetChild(3).gameObject.SetActive(true);
-        //        secondToComplete.GetChild(6).gameObject.SetActive(true);
-        //        secondToComplete.GetChild(7).gameObject.SetActive(true);
-        //        secondToComplete.parent.GetComponent<BoxCollider>().enabled = true;
-        //        Destroy(handMountingPosition.GetChild(0).gameObject);
-        //        hasBell = false;
-        //        secondPut = true;
-        //        BellPuzzleLogic.shouldStart = true;
-        //        return;
-        //    }
-        //}
+            if (!secondPut && firstPut)
+            {
+                secondToComplete.GetChild(1).gameObject.SetActive(true);
+                secondToComplete.GetChild(3).gameObject.SetActive(true);
+                secondToComplete.GetChild(6).gameObject.SetActive(true);
+                secondToComplete.GetChild(7).gameObject.SetActive(true);
+                secondToComplete.parent.GetComponent<BoxCollider>().enabled = true;
+                Destroy(handMountingPosition.GetChild(0).gameObject);
+                hasBell = false;
+                secondPut = true;
+                BellPuzzleLogic.shouldStart = true;
+                return;
+            }
+        }
     }
 }
 

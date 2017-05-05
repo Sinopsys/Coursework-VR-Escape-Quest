@@ -23,7 +23,7 @@ public class PickUpObject : MonoBehaviour
     void Update()
     {
         pickedUp = handMountingPosition.childCount == 1;
-        tilted = (vrCam.eulerAngles.x >= 275F && vrCam.eulerAngles.x <= 300F);
+        tilted = (vrCam.eulerAngles.x >= 275F && vrCam.eulerAngles.x <= 306F);
         //Debug.Log(vrCam.eulerAngles.x + " " + tilted);
         if (tilted)
             ThrowObject();
@@ -38,20 +38,20 @@ public class PickUpObject : MonoBehaviour
             gameObject.GetComponent<Rigidbody>().useGravity = false;
             gameObject.GetComponent<Rigidbody>().isKinematic = true;
             gameObject.GetComponent<BoxCollider>().enabled = false;
-            gameObject.transform.localPosition = handPosition;
-            gameObject.transform.localScale = oldScale;
             gameObject.GetComponent<Rigidbody>().constraints = new RigidbodyConstraints();
+            gameObject.transform.localPosition = handPosition;
+            //gameObject.transform.localScale = oldScale;
         }
     }
 
     public void ThrowObject()
     {
-        oldScale = gameObject.transform.localScale;
+        //oldScale = gameObject.transform.localScale;
         gameObject.GetComponent<Rigidbody>().useGravity = true;
         gameObject.GetComponent<Rigidbody>().isKinematic = false;
         gameObject.GetComponent<BoxCollider>().enabled = true;
         gameObject.transform.parent = null;
-        gameObject.transform.localScale = oldScale;
+        //gameObject.transform.localScale = oldScale;
     }
 }
 
