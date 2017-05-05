@@ -18,6 +18,8 @@ public class BellPuzzleLogic : MonoBehaviour
     private bool started = false;
     private int currentDisplayIndex = 0;
     private bool playerWon = false;
+    public GameObject painting, code;
+
 
     // Use this for initialization
     void Start()
@@ -33,6 +35,8 @@ public class BellPuzzleLogic : MonoBehaviour
         Debug.Log("bells initialized.");
         GenerateSequence();
         Debug.Log("sequence initialized.");
+        painting.SetActive(false);
+        code.SetActive(false);
     }
 
     // Update is called once per frame
@@ -96,7 +100,8 @@ public class BellPuzzleLogic : MonoBehaviour
     private void PuzzleSolved()
     {
         gameObject.GetComponents<AudioSource>()[1].Play();
-        GameObject.Find("Painting").GetComponent<ParticleSystem>().Play();
+        painting.SetActive(true);
+        code.SetActive(true);
     }
 
     private void DisplayPattern()

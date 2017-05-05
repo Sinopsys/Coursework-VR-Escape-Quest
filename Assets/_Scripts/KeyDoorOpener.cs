@@ -44,7 +44,7 @@ public class KeyDoorOpener : MonoBehaviour
             transform.GetChild(1).gameObject.SetActive(true);
             gameObject.GetComponents<AudioSource>()[1].Play();
             door.GetComponent<Animation>().Play();
-            opened = true;
+            OpenDoorAndLoadScene.opened = opened = true;
             yield return new WaitForSeconds(timeToOpen);
         }
     }

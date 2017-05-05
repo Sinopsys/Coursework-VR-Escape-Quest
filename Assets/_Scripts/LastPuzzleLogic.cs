@@ -7,6 +7,7 @@ public class LastPuzzleLogic : MonoBehaviour
     bool solved;
     float step;
     string key = "4118956";
+    public GameObject Key;
 
     // Use this for initialization
     void Start()
@@ -31,8 +32,8 @@ public class LastPuzzleLogic : MonoBehaviour
             if (new String(numbers).CompareTo(key) == 0)
             {
                 solved = true;
-                GameObject.Find("Door_a").GetComponent<Animation>().Play();
-                OpenDoorAndLoadScene.opened = true;
+                Key.SetActive(true);
+                Key.GetComponent<Rigidbody>().constraints = new RigidbodyConstraints();
                 gameObject.SetActive(false);
             }
         }
