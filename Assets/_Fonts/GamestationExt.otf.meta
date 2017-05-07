@@ -1,0 +1,23 @@
+fileFormatVersion: 2
+guid: a0391445bb07fbf40b2315ead3878bff
+timeCreated: 1494054399
+licenseType: Free
+TrueTypeFontImporter:
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: Gamestation
+  fontNames:
+  - Gamestation
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 113814d1194a3f44fb1d34967112ef8c, type: 3}
+  - {fileID: 12800000, guid: 0a56858200e7a304c81433361a938977, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

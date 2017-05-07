@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class WalkByLook : MonoBehaviour
 {
@@ -9,16 +10,23 @@ public class WalkByLook : MonoBehaviour
     public Transform vrCam;
     private bool lookingToObject = false;
     private bool mustLookToTheObject = false;
+    public AudioSource[] footSteps;
+    private bool shouldMove = false, playing = false;
+
     void Start()
     {
         GazeInputModule.pointingAt = null;
         cc = GetComponent<CharacterController>();
+        GameObject.Find("GvrViewerMain").GetComponent<GvrViewer>().VRModeEnabled = ModChanger.vrModeEnabled;
+
     }
+
 
     void Update()
     {
+        shouldMove = false;
         mustLookToTheObject = GazeInputModule.pointingAt != null;
-        if (mustLookToTheObject)
+        if (mustLookToTheObject && GazeInputModule.pointingAt.Count > 0)
             lookingToObject = (((bool)GazeInputModule.pointingAt[1] && (float)GazeInputModule.pointingAt[2] >= 4F)
                 || !((bool)GazeInputModule.pointingAt[1]));
 
@@ -26,9 +34,25 @@ public class WalkByLook : MonoBehaviour
 
         if (moveForward && (!mustLookToTheObject || (mustLookToTheObject && lookingToObject)))
         {
+            shouldMove = true;
             Vector3 forward = vrCam.TransformDirection(Vector3.forward);
             cc.SimpleMove(forward * speed);
+            if (!playing)
+                StartCoroutine(PlaySteps());
         }
+    }
+    private IEnumerator PlaySteps()
+    {
+        playing = true;
+        for (int i = 0; i < footSteps.Length; ++i)
+        {
+            int k = Random.Range(0, 4);
+            Debug.Log(k);
+            if (shouldMove)
+                footSteps[k].Play();
+            yield return new WaitForSeconds(0.65F);
+        }
+        playing = false;
     }
 }
 

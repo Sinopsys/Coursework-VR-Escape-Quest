@@ -9,6 +9,7 @@ public class MainMenu : MonoBehaviour
     void Start()
     {
         GetComponent<Renderer>().material.color = new Color(0.57647F, 0.76471F, 0.55294F);
+        GameObject.Find("GvrViewerMain").GetComponent<GvrViewer>().VRModeEnabled = ModChanger.vrModeEnabled;
     }
 
     // Update is called once per frame

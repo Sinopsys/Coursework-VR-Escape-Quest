@@ -208,24 +208,27 @@ public class GazeInputModule : BaseInputModule
 
             pointingAt = new ArrayList();
 
-            float distance = Vector3.Distance(pointerData.pointerCurrentRaycast.gameObject.transform.position,
-                                            vrCam.transform.position);
-            bool hasEventTrigger = pointerData.pointerCurrentRaycast.gameObject.GetComponent<EventTrigger>() as EventTrigger != null;
-
-            pointingAt.Add(pointerData.pointerCurrentRaycast.gameObject);
-            pointingAt.Add(hasEventTrigger);
-            pointingAt.Add(distance);
-
-            //Debug.Log(distance.ToString() + "   " + hasEventTrigger.ToString());
-            if (!(distance <= 4.35F && hasEventTrigger))
+            if (pointerData.pointerCurrentRaycast.gameObject != null)
             {
-                pointerData.pointerCurrentRaycast = new RaycastResult();
-                m_RaycastResultCache.Clear();
+                float distance = Vector3.Distance(pointerData.pointerCurrentRaycast.gameObject.transform.position,
+                                              vrCam.transform.position);
+                bool hasEventTrigger = pointerData.pointerCurrentRaycast.gameObject.GetComponent<EventTrigger>() as EventTrigger != null;
+
+                pointingAt.Add(pointerData.pointerCurrentRaycast.gameObject);
+                pointingAt.Add(hasEventTrigger);
+                pointingAt.Add(distance);
+
+                //Debug.Log(distance.ToString() + "   " + hasEventTrigger.ToString());
+                if (!(distance <= 4.35F && hasEventTrigger))
+                {
+                    pointerData.pointerCurrentRaycast = new RaycastResult();
+                    m_RaycastResultCache.Clear();
+                }
             }
         }
-        catch (System.NullReferenceException)
+        catch (System.NullReferenceException e)
         {
-            Debug.Log("null ref exception!!!");
+            Debug.Log(e.ToString() + "\n\n" + e.Message);
         }
 
 #endregion Kirill's code

@@ -14,10 +14,10 @@ public class PictureLogic : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (gameObject.GetComponent<Rigidbody>().constraints.CompareTo(new RigidbodyConstraints()) == 0)
-        //{
-        //    gameObject.GetComponent<ParticleSystem>().Stop();
-        //}
+        if (gameObject.GetComponent<Rigidbody>().constraints.CompareTo(new RigidbodyConstraints()) == 0)
+        {
+            gameObject.GetComponent<ParticleSystem>().Stop();
+        }
     }
 }
 

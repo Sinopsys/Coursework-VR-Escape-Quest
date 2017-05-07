@@ -29,7 +29,10 @@ public class BellBehaviour : MonoBehaviour
 
     private void SimpleLightUp()
     {
-        gameObject.transform.GetChild(0).transform.GetChild(3).GetComponent<MeshRenderer>().material = bellHoverMaterial;
+        if (gameObject.name.CompareTo("BELL") == 0)
+            gameObject.transform.GetChild(1).GetComponent<MeshRenderer>().material = bellHoverMaterial;
+        else
+            gameObject.transform.GetChild(0).transform.GetChild(3).GetComponent<MeshRenderer>().material = bellHoverMaterial;
     }
 
     private void SimplePlaySound()
@@ -39,14 +42,17 @@ public class BellBehaviour : MonoBehaviour
 
     public void MaterialReset()
     {
-        gameObject.transform.GetChild(0).transform.GetChild(3).GetComponent<MeshRenderer>().material = defaultBellMaterial;
+        if (gameObject.name.CompareTo("BELL") == 0)
+            gameObject.transform.GetChild(1).GetComponent<MeshRenderer>().material = defaultBellMaterial;
+        else
+            gameObject.transform.GetChild(0).transform.GetChild(3).GetComponent<MeshRenderer>().material = defaultBellMaterial;
     }
 
     public void PatternLightUp()
     {
         SimpleLightUp();
         SimplePlaySound();
-        Debug.Log("PatternLightUP");
+        // Debug.Log("PatternLightUP");
     }
 
 
@@ -69,8 +75,11 @@ public class BellBehaviour : MonoBehaviour
 
     public void PointerClick()
     {
-        int bellSelected = int.Parse(gameObject.transform.name[gameObject.transform.name.Length - 1].ToString()) - 1;
-        gameObject.transform.parent.gameObject.GetComponent<BellPuzzleLogic>().PlayerSelection(bellSelected);
+        if (gameObject.name.CompareTo("BELL") != 0)
+        {
+            int bellSelected = int.Parse(gameObject.transform.name[gameObject.transform.name.Length - 1].ToString()) - 1;
+            gameObject.transform.parent.gameObject.GetComponent<BellPuzzleLogic>().PlayerSelection(bellSelected);
+        }
         audioSrc.Play();
     }
 }

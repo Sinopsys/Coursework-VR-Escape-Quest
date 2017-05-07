@@ -25,7 +25,7 @@ public class PickUpObject : MonoBehaviour
         pickedUp = handMountingPosition.childCount == 1;
         //if (pickedUp)
         //    pickedUp = handMountingPosition.GetChild(0).name.CompareTo(gameObject.name) == 0;
-        tilted = (vrCam.eulerAngles.x >= 275F && vrCam.eulerAngles.x <= 300F);
+        tilted = (vrCam.eulerAngles.x >= 275F && vrCam.eulerAngles.x <= 303F);
         //Debug.Log(vrCam.eulerAngles.x + " " + tilted);
         if (tilted)
             ThrowObject();
@@ -35,6 +35,7 @@ public class PickUpObject : MonoBehaviour
     {
         if (!pickedUp)
         {
+            vrCam.parent.GetComponents<AudioSource>()[0].Play();
             oldScale = gameObject.transform.localScale;
             gameObject.transform.parent = handMountingPosition;
             gameObject.GetComponent<Rigidbody>().useGravity = false;
@@ -56,6 +57,7 @@ public class PickUpObject : MonoBehaviour
         if (pickedUp && handMountingPosition.GetChild(0).name.CompareTo(gameObject.name) == 0)
         {
             //oldScale = gameObject.transform.localScale;
+            vrCam.parent.GetComponents<AudioSource>()[0].Play();
             gameObject.GetComponent<Rigidbody>().useGravity = true;
             gameObject.GetComponent<Rigidbody>().isKinematic = false;
             gameObject.GetComponent<Collider>().enabled = true;

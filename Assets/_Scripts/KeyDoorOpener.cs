@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class KeyDoorOpener : MonoBehaviour
 {
-    public GameObject door;
+    public GameObject door, final;
     private static bool opened = false;
-    public float timeToOpen = 1F;
+    private float timeToOpen = 1F;
     public Transform handMountingPosition;
 
     // Use this for initialization
@@ -27,7 +27,14 @@ public class KeyDoorOpener : MonoBehaviour
     public void PointerClick()
     {
         //Debug.Log("Begin opening door");
+        StartCoroutine(LoadFinalScene());
         StartCoroutine(OpenDoor());
+    }
+
+    private IEnumerator LoadFinalScene()
+    {
+        final.SetActive(true);
+        yield return null;
     }
 
     private IEnumerator OpenDoor()
