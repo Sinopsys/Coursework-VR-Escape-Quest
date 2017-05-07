@@ -29,5 +29,15 @@ ExportedObj/
 sysinfo.txt
 
 # Builds
-*.apk
+/_APKs/*
 *.unitypackage
+
+# tex gitignore
+*.aux
+*.fls
+*.fdb_latexmk
+*.log
+*.out
+*.synctex.gz
+*.loc
+*.toc
