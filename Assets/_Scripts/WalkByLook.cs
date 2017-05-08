@@ -17,8 +17,6 @@ public class WalkByLook : MonoBehaviour
     {
         GazeInputModule.pointingAt = null;
         cc = GetComponent<CharacterController>();
-        GameObject.Find("GvrViewerMain").GetComponent<GvrViewer>().VRModeEnabled = ModChanger.vrModeEnabled;
-
     }
 
 
@@ -47,7 +45,7 @@ public class WalkByLook : MonoBehaviour
         for (int i = 0; i < footSteps.Length; ++i)
         {
             int k = Random.Range(0, 4);
-            Debug.Log(k);
+            //Debug.Log(k);
             if (shouldMove)
                 footSteps[k].Play();
             yield return new WaitForSeconds(0.65F);

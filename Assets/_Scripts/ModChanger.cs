@@ -9,7 +9,7 @@ public class ModChanger : MonoBehaviour
 
     public GameObject modeChooser;
     public static bool vrModeEnabled = false;
-    private bool checked_ = false, assigned = false;
+    private bool checked_ = false;
 
     // Use this for initialization
     void Start()
@@ -20,21 +20,21 @@ public class ModChanger : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //if (!checked_)
-        //{
-        //    if (GameObject.Find("GvrViewerMain") != null)
-        //    {
-        //        GameObject.Find("GvrViewerMain").GetComponent<GvrViewer>().VRModeEnabled = vrModeEnabled;
-        //        checked_ = true;
-        //    }
-        //}
+        if (!checked_)
+        {
+            if (GameObject.Find("GvrViewerMain") != null)
+            {
+                GameObject.Find("GvrViewerMain").GetComponent<GvrViewer>().VRModeEnabled = vrModeEnabled;
+                checked_ = true;
+            }
+        }
     }
 
     public void Click()
     {
         vrModeEnabled = gameObject.transform.GetChild(0).GetComponent<Text>().text.Contains("VR");
         checked_ = true;
-        SceneManager.LoadScene("MainMenu1_Scene");
+        SceneManager.LoadScene("TransitScene");
         modeChooser.SetActive(false);
     }
 

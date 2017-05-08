@@ -35,9 +35,10 @@ public class StoryLogic : MonoBehaviour
     IEnumerator ShowStory()
     {
         gameObject.SetActive(true);
-
+        GameObject.Find("Play").GetComponent<BoxCollider>().enabled = false;
         // 10SECONDS
-        yield return new WaitForSeconds(10F);
+        yield return new WaitForSeconds(15F);
+        Destroy(GameObject.Find("Play"));
         float alpha = GetComponent<TextMesh>().color.a;
         while (alpha > 0F)
         {
