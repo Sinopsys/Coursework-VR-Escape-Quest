@@ -1,5 +1,4 @@
 ﻿using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class BellBehaviour : MonoBehaviour
@@ -9,18 +8,11 @@ public class BellBehaviour : MonoBehaviour
     public Material defaultBellMaterial;
     private AudioSource audioSrc;
 
-
-    // Use this for initialization
     void Start()
     {
         audioSrc = this.GetComponent<AudioSource>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-
-    }
 
     public void PatternLightUp(float duration)
     {

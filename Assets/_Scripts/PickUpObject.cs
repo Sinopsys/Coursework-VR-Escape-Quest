@@ -8,9 +8,9 @@ public class PickUpObject : MonoBehaviour
     public Vector3 handPosition;
     public Vector3 handRotation;
     Vector3 oldScale;
+    public float angle1 = 275F, angle2 = 303F;
     public Transform handMountingPosition;
     public Transform vrCam;
-    //private float angle = 280F;
     private bool tilted;
     bool pickedUp = false;
 
@@ -25,7 +25,7 @@ public class PickUpObject : MonoBehaviour
         pickedUp = handMountingPosition.childCount == 1;
         //if (pickedUp)
         //    pickedUp = handMountingPosition.GetChild(0).name.CompareTo(gameObject.name) == 0;
-        tilted = (vrCam.eulerAngles.x >= 275F && vrCam.eulerAngles.x <= 303F);
+        tilted = (vrCam.eulerAngles.x >= angle1 && vrCam.eulerAngles.x <= angle2);
         //Debug.Log(vrCam.eulerAngles.x + " " + tilted);
         if (tilted)
             ThrowObject();

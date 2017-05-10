@@ -1,19 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Global : MonoBehaviour
 {
     public static bool withStone = false, cameWithStone = false;
     public Transform handMountingPosition;
 
-    // Use this for initialization
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
     void Update()
     {
         withStone = false;
@@ -30,3 +21,6 @@ public class Global : MonoBehaviour
         DontDestroyOnLoad(this);
     }
 }
+
+
+// EOF

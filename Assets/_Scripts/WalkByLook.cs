@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class WalkByLook : MonoBehaviour
 {
-    public float angle = 30F;
+    public float angle1 = 30F, angle2 = 80F;
     public float speed = 5F;
     private bool moveForward;
     private CharacterController cc;
@@ -28,7 +28,7 @@ public class WalkByLook : MonoBehaviour
             lookingToObject = (((bool)GazeInputModule.pointingAt[1] && (float)GazeInputModule.pointingAt[2] >= 4F)
                 || !((bool)GazeInputModule.pointingAt[1]));
 
-        moveForward = (vrCam.eulerAngles.x >= angle && vrCam.eulerAngles.x <= 80F);
+        moveForward = (vrCam.eulerAngles.x >= angle1 && vrCam.eulerAngles.x <= angle2);
 
         if (moveForward && (!mustLookToTheObject || (mustLookToTheObject && lookingToObject)))
         {

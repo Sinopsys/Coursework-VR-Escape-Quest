@@ -17,6 +17,8 @@ public class ModChanger : MonoBehaviour
 
     }
 
+    // todo remove unused update
+
     // Update is called once per frame
     void Update()
     {

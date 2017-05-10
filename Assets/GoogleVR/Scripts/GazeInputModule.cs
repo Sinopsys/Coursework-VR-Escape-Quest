@@ -195,16 +195,11 @@ public class GazeInputModule : BaseInputModule
         {
 
             if (pointerData.pointerCurrentRaycast.gameObject != null)
-            {
-                if (pointerData.pointerCurrentRaycast.gameObject.name == "Character")
-                {
+                if (pointerData.pointerCurrentRaycast.gameObject.name.CompareTo("Character") == 0)
                     if (m_RaycastResultCache.Count > 1)
                         pointerData.pointerCurrentRaycast = m_RaycastResultCache[1];
                     else
                         pointerData.Reset();
-                }
-            }
-
 
             pointingAt = new ArrayList();
 

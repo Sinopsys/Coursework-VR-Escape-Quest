@@ -8,16 +8,13 @@ public class LastPuzzleLogic : MonoBehaviour
     float step;
     string key = "4118956";
     public GameObject Key;
-
-    // Use this for initialization
+    
     void Start()
     {
         solved = false;
         numbers = new char[7];
-        //character = GameObject.Find("Character").gameObject.transform;
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
         if (!solved)

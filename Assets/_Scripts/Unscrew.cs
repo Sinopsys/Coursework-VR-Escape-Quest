@@ -8,11 +8,6 @@ public class Unscrew : MonoBehaviour
     bool unscrewed = false, hasScrewDriver = false;
     public Transform handMountingPosition;
 
-    // Use this for initialization
-    void Start()
-    { }
-
-    // Update is called once per frame
     void Update()
     {
         if (handMountingPosition.childCount > 0)

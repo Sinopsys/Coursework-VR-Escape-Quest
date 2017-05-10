@@ -9,24 +9,20 @@ public class KeyDoorOpener : MonoBehaviour
     private float timeToOpen = 1F;
     public Transform handMountingPosition;
 
-    // Use this for initialization
     void Start()
     {
         opened = false;
         gameObject.GetComponent<BoxCollider>().enabled = false;
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (handMountingPosition.childCount > 0)
             gameObject.GetComponent<BoxCollider>().enabled = (handMountingPosition.GetChild(0).name.CompareTo("Key") == 0);
-        //Debug.Log(gameObject.GetComponent<BoxCollider>().enabled);
     }
 
     public void PointerClick()
     {
-        //Debug.Log("Begin opening door");
         StartCoroutine(LoadFinalScene());
         StartCoroutine(OpenDoor());
     }
